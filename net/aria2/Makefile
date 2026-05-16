@@ -7,12 +7,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=aria2
-PKG_VERSION:=1.37.0
-PKG_RELEASE:=3
+PKG_VERSION:=1.37.1
+PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://github.com/aria2/aria2/releases/download/release-$(PKG_VERSION)/
-PKG_HASH:=60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/aria2/aria2.git
+PKG_SOURCE_VERSION:=master
+PKG_MIRROR_HASH:=skip
+
+PKG_FIXUP:=gettext-version
+PKG_BUILD_DEPENDS+=gettext-full/host
+
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=gc-sections lto
