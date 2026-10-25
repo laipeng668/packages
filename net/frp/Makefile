@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=frp
-PKG_VERSION:=0.71.0
-PKG_RELEASE:=2
+PKG_VERSION:=0.71.1
+PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -12,40 +12,40 @@ ARCH_ID:=$(strip $(if $(ARCH_PACKAGES),$(ARCH_PACKAGES),$(ARCH)))
 
 ifneq (,$(filter x86_64,$(ARCH_ID)))
   PKG_ARCH:=amd64
-  PKG_HASH:=84f27e39f11169f7adcef8e8b70c9329de17747b1f14dad9fb95eef5682ea716
+  PKG_HASH:=1d9875210972a5d1a62b2dc4c48df45ab0af05d3ca1b5e494a014428259df803
 else ifneq (,$(filter aarch64%,$(ARCH_ID)))
   PKG_ARCH:=arm64
-  PKG_HASH:=f33c293c275d8fc68c654b6fba8f10b2551d6463d09a9fc9cffb7227eae82266
+  PKG_HASH:=8edf590b0c396fa42f9c147121a76af83cfc2002b08f5aef0ea1008c43482019
 else ifneq (,$(filter arm%,$(ARCH_ID)))
   ARM_CPU_FEATURES:=$(word 2,$(subst +,$(space),$(call qstrip,$(CONFIG_CPU_TYPE))))
   ifeq ($(ARM_CPU_FEATURES),)
     PKG_ARCH:=arm
-    PKG_HASH:=f40a984f83e8d34a9241b0be4a9d5fbcfe513a4a5c022b84a02637ff6d36833b
+    PKG_HASH:=8eb6fe66a3b36db24ca0de44fb01e6742d0ff60e30f462c9662f41813bbf4376
   else ifneq ($(filter $(ARM_CPU_FEATURES),vfp vfpv2),)
     PKG_ARCH:=arm
-    PKG_HASH:=f40a984f83e8d34a9241b0be4a9d5fbcfe513a4a5c022b84a02637ff6d36833b
+    PKG_HASH:=8eb6fe66a3b36db24ca0de44fb01e6742d0ff60e30f462c9662f41813bbf4376
   else
     PKG_ARCH:=arm_hf
-    PKG_HASH:=eab1ecb45b00e2f9cf2ebc458fde570ceecb50689c4c5c728677f44825bf3d88
+    PKG_HASH:=a40116f15f2a05b7001f985f1f1ccb2570e2aa41329b06de76a82e71495786db
   endif
 else ifneq (,$(filter mipsel%,$(ARCH_ID)))
   PKG_ARCH:=mipsle
-  PKG_HASH:=14498e36554a275a9d41a61aa29680616a34c7c9d8914e2173a46dada4928c70
+  PKG_HASH:=2eaa97e6b42a0cbd672b079b59d5682bb64a766f9a9564d7c4bbbd3ca79ec694
 else ifneq (,$(filter mips64el%,$(ARCH_ID)))
   PKG_ARCH:=mips64le
-  PKG_HASH:=adcd256a6fa5c96985a1ddd02e0e759fc054fa3e858748055d7e49e80f51c68f
+  PKG_HASH:=5cbdcc65fab851ab8f340df7b4539c2b2dbe74a365e41af2cb380712f07bea94
 else ifneq (,$(filter mips64%,$(ARCH_ID)))
   PKG_ARCH:=mips64
-  PKG_HASH:=3d336925e8bbba313d956b04d59e2dcf301f169304bbc105340133bc3e524451
+  PKG_HASH:=277089dc9f2b5f688ced1117002eef8ce7cb508c225c7981423db772af97c7ec
 else ifneq (,$(filter mips%,$(ARCH_ID)))
   PKG_ARCH:=mips
-  PKG_HASH:=dd3fb404b546f215848db466c5707f501bcc2e24f605228f52e2a1546904a29d
+  PKG_HASH:=cb13debcd3df1b53efb229dbd0507f1f594c481ab4a2a89c6254e7df23141b5d
 else ifneq (,$(filter loongarch64%,$(ARCH_ID)))
   PKG_ARCH:=loong64
-  PKG_HASH:=e5f4d7e25b677cca885f3db5cc958441bfa12e7214e05304601331ac3d84cebc
+  PKG_HASH:=1e2fb9e17112dbc3c3d9b7ca36a23c1a97e277d6934c7a2d06faf14788e3f40a
 else ifneq (,$(filter riscv64%,$(ARCH_ID)))
   PKG_ARCH:=riscv64
-  PKG_HASH:=92b48d5e4d44d2f1415fde24489d3dfff5badbd52ddf7e816467cdcaa973aa5c
+  PKG_HASH:=b3ade396d55d11bc1c3ceb27b22bfb6e80f3ffb5932cef29393a3d3273bab070
 endif
 
 PKG_SOURCE:=frp_$(PKG_VERSION)_linux_$(PKG_ARCH).tar.gz
